@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!--
+    USO DE ESTILOS BASICOS EN TAILWIND
+
+    Para este caso, como tenemos que tailwind aplica estilos 
+    mediante el manejo de clases, se tiene que si nosotros 
+    queremos aplicar un estilo, primero se tiene que colocar 
+    lo que se quiere modificar, luego el color a utilizar y 
+    posterior a ello la opacidad del 100 al 900
+
+    En este caso, para el div que se tiene de ejemplo, se utilizaron las clases
+    "text-3xl text-rose-800 text-center pt-5" en donde, la primera de ellas es 
+    para aumentarle de tamaño al texto que se está colocando, como también, se 
+    tiene que para ese mismo texto se le aplica con color rose 800, el cual se centra
+    y se le termina aplicando un "pt", es decir, un padding de 5. 
+
+    Cabe a resaltar que tailwind ya se encarga por si solo de colocar el tamaño o más bien 
+    de calcular cuanto se pone.
+
+    Luego de estar experimentando con dicha libreria, se aplicaron los siguientes estilos
+    "text-5xl text-white text-center py-5 bg-purple-600", en donde se destaca la implementacion 
+    de dos nuevos estilos, el de "py" y "bg".
+
+    Tenemos que "py" aplica padding top y padding bottom con un solo comando.
+
+    Ahora bien, en el caso de "bg", se tiene que hace referencia al background.
+
+  -->
+
+    <!--
+    SELECTORES CON TAILWIND CSS
+
+    Se tiene que, cuando se quieren utilizar selectores en tailwind, consiste en 
+    colocar el nombre, por ejemplo "hover", y posterior a ello colocar la accion 
+    que se quiere realizar.
+
+    Por ejemplo, añadiendo dicha funcionalidad a nuestros estilos, quedarían de la
+    siguiente manera: 
+
+    "text-5xl text-white text-center py-5 bg-purple-600 hover:bg-pink-500 hover:text-gray-700"
+
+    A parte del hover, tambien se tiene el "active".
+  -->
+    <!--<div class="text-5xl text-white text-center py-5 bg-purple-600 hover:bg-pink-500 hover:text-gray-700">
+    Hola mundo
+  </div>-->
+
+    <!--
+    DISEÑO DE MENU EN SITIO WEB CON TAILWIND
+
+    Empezaremos con una capa que sera el contenedor de todo 
+    el sitio web.
+
+    Y dentro del mismo colocaremos lo que vendría siendo la barra 
+    de navegación, como también, se tendrá el div que contendrá el logo,
+    y para ello utilizando para la nav un background gris de 800, haciendo 
+    que este sea flexible, y justificar el contenido entre ellos y por último
+    alinear los items al centro.
+
+    Y despues, si se quiere agregar un logo, para este se debe de establecer su propio 
+    contenedor, el cual tendrá un padding general de 2, luego para el manejo de los links 
+    se utiliza otro contenedor. 
+
+    BREAKPOINT
+
+    Son queries que se utilizan para que, en dado caso se reduzca el tamaño de nuestra página en pantalla
+    acá es donde entra el tema responsive. 
+
+    Teniendo como prefix que, si es 'sm', 'md', 'lg', 'xl' o '2xl' realizar algun cambio
+    en el diseño del pagina.
+
+    UNIDADES DE MEDIDA
+    
+    Para el ancho tenemos que tailwind maneja ancho como "w", 
+    los cuales ya estan pre establecidos, en donde, para elegir que sea 
+    en porcentaje, se obtienen mediante fracciones.
+
+    (Cuando se tiene que la pantalla es lg, los elementos se muestran como bloque, 
+    de lo contrario se utiliza hidden para ocultarlos.
+        lg:block hidden
+    )
+
+    Ahora tenemos una clase llamada menu, la cual aplica un flex centrando los items 
+    y justificandolos en el centro, y con ello utilizar gap para separarlos entre si.
+
+    menu flex items-center justify-center gap-5 
+
+    PADDING: 
+    El área de relleno de un elemento es el espacio entre su contenido y su borde.
+
+    CREACIÓN DE COMPONENTES
+    Esto nos permitiría tener el mismo estilo, y con ello, no estarlo copiando siempre
+
+    En este caso, para crear un componente iremos primero a nuestro archivo de tailwind.css, y 
+    estando en él, haremos lo siguiente: 
+
+    .link{
+      @apply "text-white block p-5 font-bold hover:text-yellow-500
+    }
+
+    Ya teniendo nuestro componente creado, lo que haremos será llamar dicho componente
+    a la clase donde lo queremos aplicar. 
+    Ejemplo: <a class="link">Inicio</a>
+
+    DISEÑO DE BOTONES CON TRANSICIONES
+    
+    Para ello se utilizará la propiedad "transition", en donde, posterior a declararla
+    colocaremos la acción que se quiere hacer en la trasición, para este caso, aplicaremos al link 
+    "Browser Fury" una transition de la siguiente forma
+
+    transition duration-500
+
+    INTEGRACIÓN DE JAVASCRIPT
+
+    La integración de Javascript servirá para cuando se quiera que, 
+    en el caso de la barra de nevación, esta se encuentre en una pantalla más pequeña
+    se pueda que hacer que la parte responsive, se muestre con javascript. 
+
+    En este caso, se copiará el mismo menú, con la diferencia de que, en dado caso 
+    se encuentre en una pantalla más pequeña, se mostrará uno, y si se encuentra en una pantalla
+    más grande se mostrará en otro. 
+
+
+    Por lo que se utilizó el siguiente script: 
+    <script>
+    const menuButton = document.querySelector('#mobile_menu')
+    menuButton.addEventListener('click', e => {
+      const menu = document.querySelector('.mobile-links')
+      menu.classList.toggle('hidden')
+    })
+  </script>
+    
+
+  -->
+
+    <div class="w-[1920px] xsm:w-full mx-auto">
+      <nav
+        class="bg-gray-800 flex justify-between lg:justify-start items-center"
+      >
+        <div class="logo p-2 w-1/6">
+          <img src="img/logo.png" alt="" width="100" />
+        </div>
+        <div class="links lg:block hidden w-1/6 md:w-4/6">
+          <ul class="menu flex items-center justify-center gap-5">
+            <li><a href="#" class="link">Home</a></li>
+            <li><a href="#" class="link">Play Together</a></li>
+            <li><a href="#" class="link">Explore</a></li>
+            <li><a href="#" class="link_rounded">Bowser Fury</a></li>
+            <li><a href="#" class="link_buy_now">Buy Now</a></li>
+          </ul>
+        </div>
+
+        <div class="block lg:hidden w-1/6 lg:w-4/6">
+          <a href="#" class="link" id="mobile_menu">Menu</a>
+          <ul
+            class="mobile-links hidden w-full absolute z-50 left-0 text-center bg-gray-800"
+          >
+            <li><a href="#" class="link">Home</a></li>
+            <li><a href="#" class="link">Play Together</a></li>
+            <li><a href="#" class="link">Explore</a></li>
+            <li><a href="#" class="link_rounded">Bowser Fury</a></li>
+            <li><a href="#" class="link_buy_now">Buy Now</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!--
+
+      DISEÑO DE SECCIÓN DE HEADER
+      Para ello crearemos una nueva sección, la cual tendrá como nombre header.
+
+      <section class="header">
+      <img src="img/hero.jpg" alt="">
+      </section>
+
+    -->
+      <section class="header">
+        <img src="img/hero.jpg" alt="" />
+      </section>
+
+      <!--
+      Ahora lo que haré será poner un separador entre la sección del header y el nav, con respecto al contenido 
+      principal de la página, para ello haré lo siguiente: 
+
+      ESTILOS PERSONALIZADOS O EXTENDIDOS
+      
+      Para ello nos iremos al apartado de tailwind.config.js, en donde, por medio de extend, colocaremos lo siguiente: 
+
+      extend: {
+      backgroundImage: theme => ({
+        'wave-pattern': 'url(../img/wave-white.png)'
+      })
+    },
+    donde le colocaremos el nombre que llevará el patron, y la ubicación
+    de donde se encuentra la imagen. 
+
+    COMPLETANDO DISEÑO DE BOTONES Y FONDO
+    
+    -->
+
+      <section>
+        <div class="bg-wave-pattern h-6 bg-repeat-x relative -top-2"></div>
+        <div
+          class="text-center p-4 flex md:flex-row flex-col gap-3 justify-center"
+        >
+          <a
+            href="#"
+            class="inline-block py-3 px-16 bg-black text-white font-bold border-transparent border-8 text-2xl rounded-3xl hover: border-gray-200 hover:bg-white hover:text-black transition duration-200"
+            >Buy Now</a
+          >
+          <a
+            href="#"
+            class="inline-block py-3 px-16 bg-red-500 rounded-3xl text-white font-bold text-2xl border-8 border-transparent hover:bg-white hover:text-black transition duration-200"
+            >Watch the trailer</a
+          >
+        </div>
+
+        <div class="bg-wave-pattern bg-repeat-x h-6 relative top-2"></div>
+      </section>
+
+      <!-- 
+      IMAGENES DE FONDO RESPONSIVAS
+
+      Basicamente consiste en agregar un fondo, y este irlo modificando segun en el contendor que se encuentre.
+     -->
+
+      <!-- 
+        CREACION DE GRUPOS DE ESTILOS
+
+        Consiste en la forma de agrupar cierto grupo de elementos, y esto se puede utilizar para que, 
+        cuando se utilice un hover, este afecte a todos los elementos hijos que pertenezcan a dicho gurpo.
+
+        Esto se hace colocando al componente padre que tiene los estilos un "group", el cual indicara cual sera el grupo 
+        que afectara a los demas estilos, entonces, una vez habiendo aplicado eso, se ira al elemento hijo donde se quiere 
+        que tambien afecte los estilos con respecto al componente padre, y se le coloca unn "group-hover" (por ejemplo)
+
+        <a href="#" class="xl:text-2xl my-4 inline-block py-2 px-16 bg-red-500 text-white font-black border-transparent border-8 rounded-3xl hover:border-gray-200 hover:bg-white hover:text-black transition duration-200 group">
+                Watch the trailer
+                <span class="w-4 h-4 inline-block border-yellow-300 border-solid border-t-[5px] border-r-[5px] transition-all transform rotate-45 group-hover:border-red-500 xl:group-hover:ml-4"></span>
+        </a>
+
+      -->
+
+      <!-- 
+        REUSO DE COMPONENTES
+
+        Basicamente consiste en que, como se sabe que tailwindcss a la hora de manejar sus estilos en linea hace que el codigo 
+        sea mucho menos legible, entonces, para ello lo que se hace es crear componentes de estilos que puedan ser reutilizados, 
+        para este caso solo bastaria con ir al archivo "tailwind.css" y colocar lo siguiente: 
+
+        .dot{
+              @apply  h-3 w-3 bg-blue-600 rounded-full
+          }
+        
+        Ya con eso es posible reutilizar estilos en forma de componentes en nuestro codigo.
+       -->
+
+      <!-- 
+        CREANDO IMAGENES RESPONSIVAS
+        Basicamente consite en colocarles un tamaño fijo en pixeles, y con ello, tambien colocarle el breakpoint que, cuando este sea 
+        sm, colocarle una altura y ancho específico. Y con ello, ya si se desea, colocarle un hidden o algo para mostrar cierta cantidad 
+        de monedas.
+       -->
+
+      <section class="bg-pattern-characters-red py-28">
+        <div class="lg:container 2xl:w-3/5 mx-auto md:flex gap-5 md:w-full p-3">
+          <div
+            class="left bg-character-mario bg-no-repeat bg-contain bg-top w-5/6 md:w-1/2 pt-52 mx-auto"
+          >
+            <div
+              class="card text-center bg-white 2xl:w-5/6 mx-auto mt-72 rounded-2xl overflow-hidden xl:w-4/5"
+            >
+              <div class="cover bg-black">
+                <video src="videos/video01.mp4" autoplay loop muted></video>
+              </div>
+              <div class="content bg-wave-pattern bg-repeat-x relative -top-3">
+                <h3 class="font-black text-4xl py-10">Play Together</h3>
+                <p class="text-xl">
+                  Work with (or against) your friends and family*
+                </p>
+                <a href="#" class="bottom group">
+                  Watch the trailer
+                  <span
+                    class="arrow group-hover:border-red-500 xl:group-hover:ml-4"
+                  ></span>
+                </a>
+              </div>
+              <div class="dots flex justify-between p-4">
+                <div class="dot"></div>
+                <div class="dot"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="right w-5/6 md:w-1/2 text-center mx-auto">
+            <h2 class="font-black text-white text-6xl py-8">Avialable Now</h2>
+            <p class="font-bold text-white text-2xl mx-auto py-10 w-4/5">
+              Team up for a paws-itively adorable adventure!
+            </p>
+            <p class="text-white mx-auto w-4/5">
+              Bowser is up to his old tricks again and only Mario and his
+              friends can save the day! Use power-ups like the Super Bell, which
+              grants catlike abilities like climbing and scratching, to overcome
+              Bowser and his minions.
+            </p>
+
+            <div
+              class="card text-center bg-white 2xl:w-5/6 mx-auto mt-16 rounded-2xl overflow-hidden xl:w-4/5"
+            >
+              <div class="cover bg-black">
+                <video src="videos/video02.mp4" autoplay loop muted></video>
+              </div>
+              <div class="content bg-wave-pattern bg-repeat-x relative -top-3">
+                <h3 class="font-black text-4xl py-10">Explore</h3>
+                <p class="text-xl">Prowl through some popular places</p>
+                <a href="#" class="bottom group">
+                  Take a look!
+                  <span
+                    class="arrow group-hover:border-red-500 xl:group-hover:ml-4"
+                  ></span>
+                </a>
+              </div>
+              <div class="dots flex justify-between p-4">
+                <div class="dot"></div>
+                <div class="dot"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="text-center flex justify-center gap-9 pt-10">
+          <img
+            src="img/coin.gif"
+            alt="coin"
+            class="w-[50px] h-[50px] sm:w-[80px] sm:h-[80px]"
+          />
+          <img
+            src="img/coin.gif"
+            alt="coin"
+            class="w-[50px] h-[50px] sm:w-[80px] sm:h-[80px]"
+          />
+          <img
+            src="img/coin.gif"
+            alt="coin"
+            class="w-[50px] h-[50px] sm:w-[80px] sm:h-[80px]"
+          />
+          <img
+            src="img/coin.gif"
+            alt="coin"
+            class="w-[50px] h-[50px] sm:w-[80px] sm:h-[80px] hidden sm:block"
+          />
+          <img
+            src="img/coin.gif"
+            alt="coin"
+            class="w-[50px] h-[50px] sm:w-[80px] sm:h-[80px] hidden sm:block"
+          />
+          <img
+            src="img/coin.gif"
+            alt="coin"
+            class="w-[50px] h-[50px] sm:w-[80px] sm:h-[80px] hidden sm:block"
+          />
+        </footer>
+      </section>
+
+      <section class="bg-yellow-dots">
+        <div class="bg-wave-pink bg-repeat-x h-6 relative -top-4"></div>
+        <div
+          class="xsm:w-full sm:container w-2/3 mx-auto md:flex justify-center text-center items-center py-6"
+        >
+          <div class="left xl:w-1/3 lg:w-1/2 p-5">
+            <h3 class="text-yellow-900 font-black xsm:text-3xl sm:text-4xl">
+              Cat <br />
+              Transformation <br />
+              Center
+            </h3>
+            <p class="py-4 text-xl">
+              We're not kitten-transform into cat-tastic new you!
+            </p>
+            <p>
+              <a href="#" class="bottom group">
+                Meow!
+                <span
+                  class="arrow group-hover:border-red-500 xl:group-hover:ml-4"
+                ></span>
+              </a>
+            </p>
+          </div>
+          <div class="right xl:w-2/3 lg:w-1/2">
+            <img src="img/activity_img3.png" class="md:w-full" alt="" />
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-black">
+        <div class="bg-wave-pattern bg-repeat-x relative h-6 -top-4"></div>
+        <div class="container mx-auto text-center py-10 w-2/3">
+          <div class="pb-5">
+            <a href="" class="bottom group">
+              Customer Support
+              <span
+                class="arrow group-hover:border-red-500 xl:group-hover:ml-4"
+              ></span>
+            </a>
+          </div>
+          <div class="text-white">
+            <p class="py-2">
+              ** Nintendo Switch Online membership (sold separately) and
+              Nintendo Account required for online features. Not available in
+              all countries. Internet access required for online features. A
+              Nintendo Account is required to receive and redeem My Nintendo
+              points. Terms apply. nintendo.com/switch-online.
+            </p>
+
+            <p class="py-2">
+              Game, systems, some accessories and amiibo sold separately. Visit
+              amiibo.com for details on amiibo functionality.
+            </p>
+
+            <p class="py-2">
+              Nintendo Switch Lite plays all games that support handheld mode.
+            </p>
+
+            <p class="py-2">
+              ©2013-2021 Nintendo. Super Mario and Nintendo Switch are
+              trademarks of Nintendo.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+      COMO FUNCIONA EL COMPILADOR JIT
+
+      Para ello tendremos que irnos a la configuracion del postcss.config.js
+      y dentro de ese archivo colocar lo siguiente:
+
+      @tailwindcss/jit: {}
+
+      Lo que hace esta funcionalidad, es que, al momento de nosotros ejecutar dicha pagina
+      esto hara que solamente se ejecuten o coloquen todos los estilos que nada mas 
+      se esten utilizando en el html o jsx o en si el archivo que se este utilizando.
+
+      Luego de haber configurado eso en el postcss.config.js iremos a nuestro package.json y colocaremos 
+      el siguiente comando en los scripts: 
+
+      "dev_compile": "nodemon -x npm run dev -w src/tailwind.css -w tailwind.config.js -w public/index.html" 
+
+      Esto lograra mostrar como es que se disminuye el tamaño de nuestro archivo que contiene los estilos, y con ello
+      mostrarlos. 
+
+     -->
+
+      <!-- 
+      ESTILOS ARBITRARIOS EN TAILWIND CSS
+
+      Esto basicamente consiste en que, cuando se le agrega una clase
+      podemos hacer lo siguiente: 
+
+      Por ejemplo: 
+
+        w-[1200px]
+
+      Si nosotros quisieramos agregar un width que tenga un tamaño en específico, lo que debemos 
+      de realizar, es colocar el nombre de la clase, y posterior a ella un array el cual contrandrá el valor 
+      que se quiere aplicar, y esto se almacenará como un estilo propio personalizado.
+     -->
+
+      <!-- 
+      BREAKPOINTS PERSONALIZADOS
+
+      Esto consiste en ir al archivo de tailwind.config.js y en el colocar el nombre posterior a extend de lo que se quiere 
+      agregar, por ejemplo, si quisieramos agregar un nuevo tamaño, hacemos lo siguiente: 
+
+      screens: {
+        'xsm': '320px'
+      }
+
+      -->
+    </div>
+
+    <script>
+      const menuButton = document.querySelector("#mobile_menu");
+      menuButton.addEventListener("click", (e) => {
+        const menu = document.querySelector(".mobile-links");
+        menu.classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>
